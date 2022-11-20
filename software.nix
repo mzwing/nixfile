@@ -87,8 +87,8 @@
       ];
       # enable flakes
       experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
     };
-    autoOptimiseStore = true;
   };
   nixpkgs.config.allowUnfree = true;
 }
