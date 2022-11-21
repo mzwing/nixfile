@@ -41,6 +41,7 @@
     code-server
     nixpkgs-fmt
     dpkg
+    yarn
     # wine
     winetricks
     wine
