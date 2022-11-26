@@ -20,8 +20,6 @@
     firefox
     git
     aria
-    pacman
-    apt
     appimage-run
     open-vm-tools
     libsForQt5.kleopatra
@@ -40,8 +38,9 @@
     vlc
     code-server
     nixpkgs-fmt
-    dpkg
     yarn
+    nvfetcher
+    rocketchat-desktop
     # wine
     winetricks
     wine
