@@ -9,14 +9,13 @@
     google-chrome
     vscode
     vscode-fhs
-    zsh
     noto-fonts
     noto-fonts-extra
     noto-fonts-emoji
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     nodejs-19_x
-    electron_20
+    electron_22
     firefox
     git
     aria
@@ -24,9 +23,12 @@
     open-vm-tools
     libsForQt5.kleopatra
     libsForQt5.ark
+    libsForQt5.plasma-browser-integration
     gnome.gnome-boxes
     deno
     bun
+    xray
+    v2raya
     v2ray
     direnv
     whitesur-icon-theme
@@ -41,6 +43,10 @@
     yarn
     nvfetcher
     rocketchat-desktop
+    rustup
+    # go
+    go
+    # gomobile
     # wine
     winetricks
     wine
@@ -53,13 +59,12 @@
     cmakeWithGui
     ninja
     pkg-config
-    androidStudioPackages.beta
+    android-studio
     # nur
     # config.nur.repos.rewine.v2raya
     config.nur.repos.rewine.ttf-ms-win10
     config.nur.repos.linyinfeng.icalingua-plus-plus
     config.nur.repos.crazazy.js.pnpm
-    # config.nur.repos.xddxdd.xray
     config.nur.repos.YisuiMilena.hmcl-bin
   ];
   programs = {
@@ -72,7 +77,14 @@
       enable = true;
       enableSSHSupport = true;
     };
+    zsh = {
+      enable = true;
+      ohMyZsh.enable = true;
+      syntaxHighlighting.enable = true;
+      autosuggestions.enable = true;
+    };
   };
+  # virtualisation.anbox.enable = true;
   nix = {
     gc = {
       automatic = true;
@@ -84,11 +96,15 @@
       substituters = [
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
         "https://mirror.sjtu.edu.cn/nix-channels/store"
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
       ];
       # enable flakes
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
   };
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    android_sdk.accept_license = true;
+  };
 }

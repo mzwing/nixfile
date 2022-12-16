@@ -27,6 +27,8 @@
       PUB_HOSTED_URL = "https://pub.flutter-io.cn";
       FLUTTER_STORAGE_BASE_URL = "https://storage.flutter-io.cn";
       PNPM_HOME = "/home/mzwing/.local/share/pnpm";
+      RUSTUP_DIST_SERVER = "https://mirrors.ustc.edu.cn/rust-static";
+      RUSTUP_UPDATE_ROOT = "https://mirrors.ustc.edu.cn/rust-static/rustup";
     };
   };
 }

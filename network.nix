@@ -5,10 +5,10 @@
     hostName = "nixos";
     networkmanager.enable = true;
     # Configure network proxy if necessary
-    # proxy = {
-    #   default = "http://user:password@proxy:port/";
-    #   noProxy = "127.0.0.1,localhost,internal.domain";
-    # };
+    proxy = {
+      default = "http://192.168.249.1:20172";
+      noProxy = "127.0.0.1,localhost";
+    };
     # Open ports in the firewall.
     # firewall = {
     #   allowedTCPPorts = [ ... ];
