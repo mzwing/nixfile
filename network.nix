@@ -10,11 +10,11 @@
       noProxy = "127.0.0.1,localhost";
     };
     # Open ports in the firewall.
-    # firewall = {
-    #   allowedTCPPorts = [ ... ];
-    #   allowedUDPPorts = [ ... ];
+    firewall = {
+      allowedTCPPorts = [ 22 ];
+      allowedUDPPorts = [ 22 ];
     #   Or disable the firewall altogether.
     #   enable = false;
-    # };
+    };
   };
 }

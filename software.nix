@@ -20,16 +20,12 @@
     git
     aria
     appimage-run
-    open-vm-tools
     libsForQt5.kleopatra
     libsForQt5.ark
     libsForQt5.plasma-browser-integration
     gnome.gnome-boxes
     deno
     bun
-    xray
-    v2raya
-    v2ray
     direnv
     whitesur-icon-theme
     whitesur-gtk-theme
@@ -44,6 +40,7 @@
     nvfetcher
     rocketchat-desktop
     rustup
+    node2nix
     # go
     go
     # gomobile
@@ -61,7 +58,6 @@
     pkg-config
     android-studio
     # nur
-    # config.nur.repos.rewine.v2raya
     config.nur.repos.rewine.ttf-ms-win10
     config.nur.repos.linyinfeng.icalingua-plus-plus
     config.nur.repos.crazazy.js.pnpm
@@ -79,12 +75,21 @@
     };
     zsh = {
       enable = true;
-      ohMyZsh.enable = true;
+      ohMyZsh = {
+        enable = true;
+        theme = "robbyrussell";
+        plugins = [
+          "git"
+        ];
+      };
       syntaxHighlighting.enable = true;
       autosuggestions.enable = true;
     };
   };
-  # virtualisation.anbox.enable = true;
+  virtualisation = {
+    # anbox.enable = true;
+    vmware.guest.enable = true;
+  };
   nix = {
     gc = {
       automatic = true;
