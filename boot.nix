@@ -10,6 +10,6 @@
       };
       systemd-boot.enable = true;
     };
-    #  kernelPackages = pkgs.linuxKernel.kernels.linux_zen;
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   };
 }

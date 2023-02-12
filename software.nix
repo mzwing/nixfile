@@ -30,12 +30,11 @@
     whitesur-icon-theme
     whitesur-gtk-theme
     element-desktop
-    darling-dmg
     amule
     krita
     vlc
-    code-server
     nixpkgs-fmt
+    cachix
     yarn
     nvfetcher
     rocketchat-desktop
@@ -50,6 +49,8 @@
     winePackages.fonts
     winePackages.base
     winePackages.waylandFull
+    gcc
+    python311
     # flutter
     flutter
     clang
@@ -89,6 +90,7 @@
   virtualisation = {
     # anbox.enable = true;
     vmware.guest.enable = true;
+    waydroid.enable = true;
   };
   nix = {
     gc = {
@@ -106,6 +108,7 @@
       # enable flakes
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
+      trusted-users = [ "root" "mzwing" ];
     };
   };
   nixpkgs.config = {

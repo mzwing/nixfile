@@ -8,6 +8,8 @@
     ./users.nix
     ./software.nix
     ./desktop.nix
+    # Include cachix
+    ./cachix.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];

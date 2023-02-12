@@ -11,7 +11,7 @@
     };
     # Open ports in the firewall.
     firewall = {
-      allowedTCPPorts = [ 22 ];
+      allowedTCPPorts = [ 22 4444 ];
       allowedUDPPorts = [ 22 ];
     #   Or disable the firewall altogether.
     #   enable = false;
