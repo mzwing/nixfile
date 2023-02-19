@@ -7,8 +7,6 @@
     vim
     wget
     google-chrome
-    vscode
-    vscode-fhs
     noto-fonts
     noto-fonts-extra
     noto-fonts-emoji
@@ -40,6 +38,7 @@
     rocketchat-desktop
     rustup
     node2nix
+    nssTools
     # go
     go
     # gomobile

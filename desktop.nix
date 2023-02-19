@@ -14,12 +14,6 @@
     printing.enable = true;
     openssh.enable = true;
     flatpak.enable = true;
-    # cachix
-    cachix-agent.enable = true;
-    # cachix-watch-store = {
-    #   enable = true;
-    #   compressionLevel = 9;
-    # };
     # code-server
     code-server = {
       enable = true;
@@ -30,6 +24,17 @@
       # hashedPassword = "";
       host = "0.0.0.0";
       user = "mzwing";
+    };
+    # caddy
+    caddy = {
+      enable = true;
+      virtualHosts = {
+        "192.168.241.132" = {
+          extraConfig = ''
+            reverse_proxy /* localhost:4444
+          '';
+        };
+      };
     };
   };
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
