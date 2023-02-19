@@ -2,7 +2,7 @@
 
 {
   networking = {
-    hostName = "nixos";
+    hostName = "vmware";
     networkmanager.enable = true;
     # Configure network proxy if necessary
     proxy = {
@@ -11,10 +11,10 @@
     };
     # Open ports in the firewall.
     firewall = {
-      allowedTCPPorts = [ 22 80 443 4444 ];
+      allowedTCPPorts = [ 22 4444 ];
       allowedUDPPorts = [ 22 ];
-    #   Or disable the firewall altogether.
-    #   enable = false;
+      # Or disable the firewall altogether.
+      # enable = false;
     };
   };
 }
