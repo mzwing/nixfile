@@ -2,9 +2,9 @@
 
 {
   imports = [
-    /services/code-server.nix
+    ../../services/code-server.nix
     # Include cachix based sources
-    /cachix.nix
+    ../../cachix.nix
   ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget

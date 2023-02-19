@@ -2,7 +2,7 @@
 
 {
   imports = [
-    /services/code-server.nix
+    ../../services/code-server.nix
   ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
