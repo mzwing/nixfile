@@ -1,9 +1,8 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   networking = {
     hostName = "vmware";
-    networkmanager.enable = true;
     # Configure network proxy if necessary
     proxy = {
       default = "http://192.168.249.1:20172";

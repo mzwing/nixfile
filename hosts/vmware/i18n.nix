@@ -17,19 +17,20 @@
         addons = with pkgs; [
           fcitx5-chinese-addons
           fcitx5-rime
-          fcitx5-anthy
         ];
         enableRimeData = true;
       };
     };
   };
-  environment = {
-    variables = {
-      PUB_HOSTED_URL = "https://pub.flutter-io.cn";
-      FLUTTER_STORAGE_BASE_URL = "https://storage.flutter-io.cn";
-      PNPM_HOME = "/home/mzwing/.local/share/pnpm";
-      RUSTUP_DIST_SERVER = "https://mirrors.ustc.edu.cn/rust-static";
-      RUSTUP_UPDATE_ROOT = "https://mirrors.ustc.edu.cn/rust-static/rustup";
-    };
+  services.xserver = {
+    layout = "cn";
+    libinput.enable = true;
   };
+  environment.systemPackages = with pkgs; [
+    noto-fonts
+    noto-fonts-extra
+    noto-fonts-emoji
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+  ];
 }

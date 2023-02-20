@@ -2,21 +2,21 @@
 
 {
   imports = [
+    ./env.nix
+    # Include services
     ../../services/code-server.nix
+    ../../services/openssh.nix
+    ../../services/nix-config.nix
     # Include cachix based sources
     ../../cachix.nix
   ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  # Nix Official pkgs
   environment.systemPackages = with pkgs; [
     vim
     wget
     google-chrome
-    noto-fonts
-    noto-fonts-extra
-    noto-fonts-emoji
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
     nodejs-19_x
     electron_22
     firefox
@@ -25,7 +25,6 @@
     appimage-run
     libsForQt5.kleopatra
     libsForQt5.ark
-    libsForQt5.plasma-browser-integration
     gnome.gnome-boxes
     deno
     bun
@@ -41,9 +40,6 @@
     yarn
     nvfetcher
     rocketchat-desktop
-    rustup
-    node2nix
-    nssTools
     # go
     go
     # gomobile
@@ -62,11 +58,13 @@
     ninja
     pkg-config
     android-studio
-    # nur
-    config.nur.repos.rewine.ttf-ms-win10
-    config.nur.repos.linyinfeng.icalingua-plus-plus
-    config.nur.repos.crazazy.js.pnpm
-    config.nur.repos.YisuiMilena.hmcl-bin
+  ];
+  # NUR pkgs
+  environment.systemPackages = with config.nur.repos; [
+    rewine.ttf-ms-win10
+    linyinfeng.icalingua-plus-plus
+    crazazy.js.pnpm
+    YisuiMilena.hmcl-bin
   ];
   programs = {
     partition-manager.enable = true;
