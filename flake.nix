@@ -40,7 +40,7 @@
       system = "x86_64-linux";
       modules = [
         nur.nixosModules.nur
-        ./hosts/wsl/conconfiguration.nix
+        ./hosts/wsl/configuration.nix
         ({ ... }: {
           nix.settings = {
             substituters = [ "https://nixos-cn.cachix.org" ];
