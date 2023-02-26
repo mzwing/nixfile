@@ -58,14 +58,13 @@
     ninja
     pkg-config
     android-studio
+    # NUR pkgs
+    config.nur.repos.rewine.ttf-ms-win10
+    config.nur.repos.linyinfeng.icalingua-plus-plus
+    config.nur.repos.crazazy.js.pnpm
+    config.nur.repos.YisuiMilena.hmcl-bin
   ];
-  # NUR pkgs
-  environment.systemPackages = with config.nur.repos; [
-    rewine.ttf-ms-win10
-    linyinfeng.icalingua-plus-plus
-    crazazy.js.pnpm
-    YisuiMilena.hmcl-bin
-  ];
+  services.code-server.user = "mzwing";
   programs = {
     partition-manager.enable = true;
     vim.defaultEditor = true;

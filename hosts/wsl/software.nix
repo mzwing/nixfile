@@ -43,6 +43,11 @@
       autosuggestions.enable = true;
     };
   };
+  services.code-server = {
+    user = "nixos";
+    # Add pwsh.exe to PATH!(x)
+    # extraEnvironment.PATH = "$PATH:\"/mnt/c/Users/Lockinwise Lolite/AppData/Local/Microsoft/WindowsApps/\"";
+  };
   nix = {
     gc = {
       automatic = true;

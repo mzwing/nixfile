@@ -5,7 +5,7 @@
     hostName = "wsl";
     # Configure network proxy if necessary
     proxy = {
-      default = "http://172.31.160.1:20172";
+      default = "http://172.18.95.1:20172";
       noProxy = "127.0.0.1,localhost";
     };
     # Open ports in the firewall.
