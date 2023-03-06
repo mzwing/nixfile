@@ -5,7 +5,7 @@
     hostName = "vmware";
     # Configure network proxy if necessary
     proxy = {
-      default = "http://192.168.249.1:20172";
+      default = "http://169.254.170.88:20172";
       noProxy = "127.0.0.1,localhost";
     };
     # Open ports in the firewall.
