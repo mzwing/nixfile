@@ -6,7 +6,7 @@
     # Configure network proxy if necessary
     proxy = {
       default = "http://169.254.170.88:20172";
-      noProxy = "127.0.0.1,localhost";
+      noProxy = "127.0.0.1,localhost,::1";
     };
     # Open ports in the firewall.
     firewall = {

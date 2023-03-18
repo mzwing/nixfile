@@ -18,6 +18,7 @@
     wget
     google-chrome
     nodejs-19_x
+    node2nix
     electron_22
     firefox
     git
@@ -53,11 +54,13 @@
     python311
     # flutter
     flutter
+    gtk3
+    gtk3-x11
     clang
-    cmakeWithGui
+    cmake
     ninja
     pkg-config
-    android-studio
+    android-tools
     # NUR pkgs
     config.nur.repos.rewine.ttf-ms-win10
     config.nur.repos.linyinfeng.icalingua-plus-plus
