@@ -18,7 +18,6 @@
           fcitx5-chinese-addons
           fcitx5-rime
         ];
-        enableRimeData = true;
       };
     };
   };

@@ -17,30 +17,19 @@
     vim
     wget
     google-chrome
-    nodejs-19_x
-    node2nix
-    electron_22
-    firefox
+    nodejs
+    electron
     git
     aria
     appimage-run
     libsForQt5.kleopatra
     libsForQt5.ark
-    gnome.gnome-boxes
     deno
-    bun
     direnv
-    whitesur-icon-theme
-    whitesur-gtk-theme
-    element-desktop
-    amule
-    krita
-    vlc
     nixpkgs-fmt
     cachix
     yarn
     nvfetcher
-    rocketchat-desktop
     # go
     go
     # gomobile
@@ -65,7 +54,6 @@
     config.nur.repos.rewine.ttf-ms-win10
     config.nur.repos.linyinfeng.icalingua-plus-plus
     config.nur.repos.crazazy.js.pnpm
-    config.nur.repos.YisuiMilena.hmcl-bin
   ];
   services.code-server.user = "mzwing";
   programs = {
