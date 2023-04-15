@@ -28,7 +28,7 @@
     direnv
     nixpkgs-fmt
     cachix
-    yarn
+    yarn2nix
     nvfetcher
     # go
     go
@@ -80,9 +80,7 @@
     };
   };
   virtualisation = {
-    # anbox.enable = true;
     vmware.guest.enable = true;
-    waydroid.enable = true;
   };
   nix = {
     gc = {

@@ -9,6 +9,7 @@
     # NixOS-cn
     nixos-cn = {
       url = "github:nixos-cn/flakes";
+      # 强制 nixos-cn 和该 flake 使用相同版本的 nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -19,20 +20,12 @@
       system = "x86_64-linux";
       modules = [
         nur.nixosModules.nur
+        # 将nixos-cn flake提供的registry添加到全局registry列表中
+        # 可在`nixos-rebuild switch`之后通过`nix registry list`查看
+        nixos-cn.nixosModules.nixos-cn-registries
+        # 引入nixos-cn flake提供的NixOS模块
+        nixos-cn.nixosModules.nixos-cn
         ./hosts/vmware/configuration.nix
-        ({ ... }: {
-          nix.settings = {
-            substituters = [ "https://nixos-cn.cachix.org" ];
-            trusted-public-keys = [ "nixos-cn.cachix.org-1:L0jEaL6w7kwQOPlLoCR3ADx+E3Q8SEFEcB9Jaibl0Xg=" ];
-          };
-          imports = [
-            # 将nixos-cn flake提供的registry添加到全局registry列表中
-            # 可在`nixos-rebuild switch`之后通过`nix registry list`查看
-            nixos-cn.nixosModules.nixos-cn-registries
-            # 引入nixos-cn flake提供的NixOS模块
-            nixos-cn.nixosModules.nixos-cn
-          ];
-        })
       ];
     };
     # WSL NixOS
@@ -40,20 +33,12 @@
       system = "x86_64-linux";
       modules = [
         nur.nixosModules.nur
+        # 将nixos-cn flake提供的registry添加到全局registry列表中
+        # 可在`nixos-rebuild switch`之后通过`nix registry list`查看
+        nixos-cn.nixosModules.nixos-cn-registries
+        # 引入nixos-cn flake提供的NixOS模块
+        nixos-cn.nixosModules.nixos-cn
         ./hosts/wsl/configuration.nix
-        ({ ... }: {
-          nix.settings = {
-            substituters = [ "https://nixos-cn.cachix.org" ];
-            trusted-public-keys = [ "nixos-cn.cachix.org-1:L0jEaL6w7kwQOPlLoCR3ADx+E3Q8SEFEcB9Jaibl0Xg=" ];
-          };
-          imports = [
-            # 将nixos-cn flake提供的registry添加到全局registry列表中
-            # 可在`nixos-rebuild switch`之后通过`nix registry list`查看
-            nixos-cn.nixosModules.nixos-cn-registries
-            # 引入nixos-cn flake提供的NixOS模块
-            nixos-cn.nixosModules.nixos-cn
-          ];
-        })
       ];
     };
   };
