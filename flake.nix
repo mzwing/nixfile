@@ -14,10 +14,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, nur, nixos-cn }: {
+  outputs = { self, nixpkgs, nur, nixos-cn }:
+  let system = "x86_64-linux";
+  in {
     # VMware NixOS
     nixosConfigurations."vmware" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       modules = [
         nur.nixosModules.nur
         # 将nixos-cn flake提供的registry添加到全局registry列表中
@@ -39,6 +41,19 @@
         # 引入nixos-cn flake提供的NixOS模块
         nixos-cn.nixosModules.nixos-cn
         ./hosts/wsl/configuration.nix
+      ];
+    };
+    # ddp-us openvz
+    nixosConfigurations."ddp-us" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        nur.nixosModules.nur
+        # 将nixos-cn flake提供的registry添加到全局registry列表中
+        # 可在`nixos-rebuild switch`之后通过`nix registry list`查看
+        nixos-cn.nixosModules.nixos-cn-registries
+        # 引入nixos-cn flake提供的NixOS模块
+        nixos-cn.nixosModules.nixos-cn
+        ./hosts/ddp-us/configuration.nix
       ];
     };
   };
