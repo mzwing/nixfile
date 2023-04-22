@@ -4,6 +4,7 @@
   imports = [
     ./ip.nix
     ./nixos.nix
+    ../../cachix.nix
   ];
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;

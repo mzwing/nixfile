@@ -14,8 +14,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, nur, nixos-cn }:
-  let system = "x86_64-linux";
+  outputs = { self, nixpkgs, nur, nixos-cn }:let
+    system = "x86_64-linux";
   in {
     # VMware NixOS
     nixosConfigurations."vmware" = nixpkgs.lib.nixosSystem {
@@ -32,7 +32,7 @@
     };
     # WSL NixOS
     nixosConfigurations."wsl" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       modules = [
         nur.nixosModules.nur
         # 将nixos-cn flake提供的registry添加到全局registry列表中
@@ -45,7 +45,7 @@
     };
     # ddp-us openvz
     nixosConfigurations."ddp-us" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       modules = [
         nur.nixosModules.nur
         # 将nixos-cn flake提供的registry添加到全局registry列表中

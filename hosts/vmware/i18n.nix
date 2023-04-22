@@ -15,8 +15,11 @@
       enabled = "fcitx5";
       fcitx5 = {
         addons = with pkgs; [
+          # Chinese
           fcitx5-chinese-addons
           fcitx5-rime
+          # Japanese
+          fcitx5-mozc
         ];
       };
     };
