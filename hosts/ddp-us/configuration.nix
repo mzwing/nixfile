@@ -55,7 +55,7 @@
       enable = true;
       settings.PermitRootLogin = "yes";
     };
-    # resolved.enable = true;
+    resolved.enable = false;
     dnsmasq = {
       enable = true;
       settings.servers = [
