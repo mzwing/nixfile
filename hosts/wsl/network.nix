@@ -3,14 +3,9 @@
 {
   networking = {
     hostName = "wsl";
-    # Configure network proxy if necessary
-    proxy = {
-      default = "http://172.18.95.1:20172";
-      noProxy = "127.0.0.1,localhost,::1";
-    };
     # Open ports in the firewall.
     firewall = {
-      allowedTCPPorts = [ 22 4444 ];
+      allowedTCPPorts = [ 22 ];
       allowedUDPPorts = [ 22 ];
       # Or disable the firewall altogether.
       # enable = false;

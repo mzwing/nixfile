@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../services/code-server.nix
+    # ../../services/code-server.nix
     ../../services/openssh.nix
   ];
   # List packages installed in system profile. To search, run:
@@ -11,14 +11,11 @@
     vim
     wget
     git
-    aria
     bun
-    code-server
     nixpkgs-fmt
     direnv
     nvfetcher
     gcc
-    python311
   ];
   programs = {
     vim.defaultEditor = true;
@@ -27,9 +24,8 @@
     # mtr.enable = true;
     gnupg.agent = {
       enable = true;
-      # enableSSHSupport = true;
+      enableSSHSupport = true;
     };
-    ssh.startAgent = true;
     zsh = {
       enable = true;
       ohMyZsh = {
@@ -42,11 +38,6 @@
       syntaxHighlighting.enable = true;
       autosuggestions.enable = true;
     };
-  };
-  services.code-server = {
-    user = "nixos";
-    # Add pwsh.exe to PATH!(x)
-    # extraEnvironment.PATH = "$PATH:\"/mnt/c/Users/Lockinwise Lolite/AppData/Local/Microsoft/WindowsApps/\"";
   };
   nix = {
     gc = {
