@@ -17,18 +17,48 @@
     useNetworkd = true;
     firewall = {
       allowedTCPPorts = [ 22 ];
-      allowedUDPPorts = [ 22 ];
     };
   };
 
-  systemd.network.networks.venet0 = {
-    name = "venet0";
-    networkConfig = {
-      DHCP = "no";
-      DefaultRouteOnDevice = "yes";
-      ConfigureWithoutCarrier = "yes";
+  systemd = {
+    network.networks.venet0 = {
+      name = "venet0";
+      networkConfig = {
+        DHCP = "no";
+        DefaultRouteOnDevice = "yes";
+        ConfigureWithoutCarrier = "yes";
+      };
+      address = [ "/24" ];
     };
-    address = [ "/24" ];
+    services.sing-box = {
+      description = "sing-box service";
+      documentation = [
+        "https://sing-box.sagernet.org"
+      ];
+      after = [
+        "network.target"
+        "nss-lookup.target"
+      ];
+      serviceConfig = {
+        CapabilityBoundingSet = [ "CAP_NET_ADMIN" "CAP_NET_BIND_SERVICE" "CAP_SYS_PTRACE" "CAP_DAC_READ_SEARCH" ];
+        AmbientCapabilities = [ "CAP_NET_ADMIN" "CAP_NET_BIND_SERVICE" "CAP_SYS_PTRACE" "CAP_DAC_READ_SEARCH" ];
+        RestartSec = 10;
+        LimitNOFILE = "infinity";
+      };
+      path = [ pkgs.sing-box ];
+      script = [
+        "sing-box -D /var/lib/sing-box -C /etc/sing-box run"
+      ];
+      reload = [
+        "kill -HUP $MAINPID"
+      ];
+      restartTriggers = [
+        "on-failure"
+      ];
+      wantedBy = [
+        "multi-user.target"
+      ];
+    };
   };
 
   users = {
@@ -53,22 +83,25 @@
       enable = true;
       settings.PermitRootLogin = "yes";
     };
+    resolved.enable = false;
     dnsmasq = {
       enable = true;
-      settings.servers = [
-        "1.1.1.1"
-        "8.8.8.8"
-        "9.9.9.9"
-      ];
+      settings = {
+        server = [
+          "1.1.1.1"
+          "8.8.8.8"
+        ];
+        interface = "venet0";
+        bind-interfaces = true;
+        no-resolv = true;
+      };
     };
-    resolved.enable = false;
   };
 
   environment.systemPackages = with pkgs; [
     vim
     wget
     git
-    dnsmasq
     screen
     sing-box
   ];
