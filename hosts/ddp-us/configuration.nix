@@ -5,12 +5,12 @@
     ./nixos.nix
     ../../cachix.nix
   ];
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = 1;
-    "net.ipv6.conf.all.forwarding" = 1;
-    "net.ipv4.conf.all.rp_filter" = 0;
-    "net.ipv4.conf.default.rp_filter" = 0;
-  };
+  # boot.kernel.sysctl = {
+    # "net.ipv4.ip_forward" = 1;
+    # "net.ipv6.conf.all.forwarding" = 1;
+    # "net.ipv4.conf.all.rp_filter" = 0;
+    # "net.ipv4.conf.default.rp_filter" = 0;
+  # };
 
   networking = {
     hostName = "ddp-us";
@@ -31,6 +31,7 @@
       address = [ "/24" ];
     };
     services.sing-box = {
+      enable = false;
       description = "sing-box service";
       documentation = [
         "https://sing-box.sagernet.org"
@@ -91,8 +92,8 @@
           "1.1.1.1"
           "8.8.8.8"
         ];
-        interface = "venet0";
-        bind-interfaces = true;
+        # interface = "venet0";
+        # bind-interfaces = true;
         no-resolv = true;
       };
     };
