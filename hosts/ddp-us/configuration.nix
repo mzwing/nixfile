@@ -112,6 +112,7 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
+      pinentryFlavor = "tty";
     };
     zsh = {
       enable = true;

@@ -25,6 +25,7 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
+      pinentryFlavor = "tty";
     };
     zsh = {
       enable = true;
@@ -55,6 +56,7 @@
       # enable flakes
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
+      trusted-users = [ "root" "mzwing" ];
     };
   };
   nixpkgs.config = {
