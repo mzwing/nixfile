@@ -40,22 +40,16 @@
         "network.target"
         "nss-lookup.target"
       ];
+      path = [ pkgs.sing-box ];
       serviceConfig = {
         CapabilityBoundingSet = [ "CAP_NET_ADMIN" "CAP_NET_BIND_SERVICE" "CAP_SYS_PTRACE" "CAP_DAC_READ_SEARCH" ];
         AmbientCapabilities = [ "CAP_NET_ADMIN" "CAP_NET_BIND_SERVICE" "CAP_SYS_PTRACE" "CAP_DAC_READ_SEARCH" ];
+        Restart = "on-failure";
         RestartSec = 10;
         LimitNOFILE = "infinity";
+        ExecStart = "${sing-box} -D /var/lib/sing-box -C /etc/sing-box run";
+        ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
       };
-      path = [ pkgs.sing-box ];
-      script = [
-        "sing-box -D /var/lib/sing-box -C /etc/sing-box run"
-      ];
-      reload = [
-        "kill -HUP $MAINPID"
-      ];
-      restartTriggers = [
-        "on-failure"
-      ];
       wantedBy = [
         "multi-user.target"
       ];
