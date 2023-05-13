@@ -1,0 +1,4 @@
+[submodule "hosts/wsl/nixos-wsl"]
+	path = hosts/wsl/nixos-wsl
+	url = https://github.com/nix-community/NixOS-WSL.git
+	branch = main

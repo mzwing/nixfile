@@ -16,6 +16,7 @@
     direnv
     nvfetcher
     gcc
+    sing-box
   ];
   programs = {
     vim.defaultEditor = true;

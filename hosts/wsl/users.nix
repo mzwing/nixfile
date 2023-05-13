@@ -5,7 +5,7 @@
   users = {
     users.mzwing = {
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
       ];
       useDefaultShell = true;

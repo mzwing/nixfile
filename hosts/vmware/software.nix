@@ -17,6 +17,7 @@
     vim
     wget
     google-chrome
+    microsoft-edge-dev
     nodejs
     electron
     git
@@ -30,6 +31,7 @@
     cachix
     yarn2nix
     nvfetcher
+    sing-box
     # go
     go
     # gomobile

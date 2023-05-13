@@ -19,7 +19,7 @@ in
   wsl = {
     enable = true;
     automountPath = "/mnt";
-    defaultUser = "nixos";
+    defaultUser = "mzwing";
     startMenuLaunchers = true;
 
     # Enable native Docker support
@@ -27,7 +27,6 @@ in
 
     # Enable integration with Docker Desktop (needs to be installed)
     # docker-desktop.enable = true;
-
   };
 
   # Enable nix flakes
