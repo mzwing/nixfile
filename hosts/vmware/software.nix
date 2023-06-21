@@ -16,33 +16,33 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    google-chrome
     microsoft-edge-dev
     nodejs
+    deno
     electron
     git
     aria
     appimage-run
     libsForQt5.kleopatra
-    libsForQt5.ark
-    deno
+    sing-box
+    gcc
+    python3Full
+    # nix
     direnv
     nixpkgs-fmt
     cachix
     yarn2nix
     nvfetcher
-    sing-box
+    rnix-lsp
     # go
     go
-    # gomobile
+    gomobile
     # wine
     winetricks
     wine
     winePackages.fonts
     winePackages.base
     winePackages.waylandFull
-    gcc
-    python311
     # flutter
     flutter
     gtk3
@@ -61,6 +61,13 @@
   programs = {
     partition-manager.enable = true;
     vim.defaultEditor = true;
+    firefox = {
+      enable = true;
+      languagePacks = [
+        "en-US"
+        "zh-CN"
+      ];
+    };
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     # mtr.enable = true;
@@ -106,5 +113,11 @@
   nixpkgs.config = {
     allowUnfree = true;
     android_sdk.accept_license = true;
+    permittedInsecurePackages = [
+      "nodejs-16.20.0"
+      "nodejs-14.21.3"
+      "openssl-1.1.1t"
+      "openssl-1.1.1u"
+    ];
   };
 }
