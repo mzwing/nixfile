@@ -10,7 +10,10 @@
     hostName = "ddp-us";
     useNetworkd = true;
     firewall = {
-      allowedTCPPorts = [ 22 ];
+      allowedTCPPorts = [
+        22
+        443
+      ];
     };
   };
 
@@ -24,11 +27,10 @@
       };
       address = [ 
         "/24"
-        "/128"
       ];
     };
     services.sing-box = {
-      enable = false;
+      enable = true;
       description = "sing-box service";
       documentation = [
         "https://sing-box.sagernet.org"
@@ -43,7 +45,7 @@
         Restart = "on-failure";
         RestartSec = 10;
         LimitNOFILE = "infinity";
-        ExecStart = "${pkgs.sing-box} -D /var/lib/sing-box -C /etc/sing-box run";
+        ExecStart = "${pkgs.sing-box} -D /var/lib/sing-box -C /usr/local/etc/sing-box run";
         ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
       };
       wantedBy = [
@@ -72,7 +74,6 @@
   services = {
     openssh = {
       enable = true;
-      settings.PermitRootLogin = "yes";
     };
     resolved.enable = false;
     dnsmasq = {
@@ -131,5 +132,5 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
