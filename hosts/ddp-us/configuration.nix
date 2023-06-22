@@ -45,7 +45,7 @@
         Restart = "on-failure";
         RestartSec = 10;
         LimitNOFILE = "infinity";
-        ExecStart = "${pkgs.sing-box} -D /var/lib/sing-box -C /usr/local/etc/sing-box run";
+        ExecStart = "${pkgs.sing-box}/bin/sing-box -D /var/lib/sing-box -C /usr/local/etc/sing-box run";
         ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
       };
       wantedBy = [
