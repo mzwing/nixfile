@@ -103,6 +103,11 @@
         }
       '';
     };
+    vaultwarden = {
+      enable = true;
+      config = {};
+      environmentFile = "";
+    };
   };
 
   environment.systemPackages = with pkgs; [
