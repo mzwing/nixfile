@@ -18,8 +18,6 @@
           # Chinese
           fcitx5-chinese-addons
           fcitx5-rime
-          # Japanese
-          fcitx5-mozc
         ];
       };
     };
