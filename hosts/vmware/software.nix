@@ -5,7 +5,7 @@
     ./env.nix
     # Include services
     ../../services/code-server.nix
-    # ../../services/openssh.nix
+    ../../services/openssh.nix
     ../../services/nix-config.nix
     # Include cachix based sources
     ../../cachix.nix
@@ -28,7 +28,7 @@
     whitesur-gtk-theme
     whitesur-icon-theme
     sing-box
-    qq
+    zulu
     gcc
     python3Full
     # nix
@@ -59,7 +59,6 @@
     # NUR pkgs
     config.nur.repos.rewine.ttf-ms-win10
     config.nur.repos.linyinfeng.icalingua-plus-plus
-    config.nur.repos.crazazy.js.pnpm
   ];
   programs = {
     partition-manager.enable = true;
@@ -82,6 +81,7 @@
     gnome-terminal.enable = true;
     gnome-disks.enable = true;
     file-roller.enable = true;
+    nix-ld.enable = true;
     zsh = {
       enable = true;
       ohMyZsh = {
@@ -97,5 +97,7 @@
   };
   virtualisation = {
     vmware.guest.enable = true;
+    waydroid.enable = true;
+    lxd.enable = true;
   };
 }
