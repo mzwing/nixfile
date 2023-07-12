@@ -102,11 +102,32 @@
           proxy_protocol  on;
         }
       '';
+      virtualHosts."vaultwarden.mzwing.gq" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+        };
+      };
     };
     vaultwarden = {
       enable = true;
-      config = {};
-      environmentFile = "";
+      config = {
+        DOMAIN = "https://vaultwarden.mzwing.gq";
+        WEBSOCKET_ENABLED =  true;
+        SIGNUPS_ALLOWED = true;
+        ROCKET_ADDRESS = "127.0.0.1";
+        ROCKET_PORT = 8222;
+        ROCKET_LOG = "critical";
+        SMTP_HOST = "smtp.office365.com";
+        SMTP_PORT = 587;
+        SMTP_SECURITY = starttls;
+        SMTP_AUTH_MECHANISM = "Login";
+        SMTP_FROM = "mzwing@lockinwize.onmicrosoft.com";
+        SMTP_USERNAME = "mzwing@lockinwize.onmicrosoft.com";
+        SMTP_FROM_NAME = "vaultwarden.mzwing.gq Vaultwarden server";
+      };
+      environmentFile = "/var/lib/vaultwarden.env";
     };
   };
 
