@@ -121,7 +121,7 @@
         ROCKET_LOG = "critical";
         SMTP_HOST = "smtp.office365.com";
         SMTP_PORT = 587;
-        SMTP_SECURITY = starttls;
+        SMTP_SECURITY = "starttls";
         SMTP_AUTH_MECHANISM = "Login";
         SMTP_FROM = "mzwing@lockinwize.onmicrosoft.com";
         SMTP_USERNAME = "mzwing@lockinwize.onmicrosoft.com";
