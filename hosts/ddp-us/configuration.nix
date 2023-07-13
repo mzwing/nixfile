@@ -103,7 +103,8 @@
         }
       '';
       virtualHosts."vaultwarden.mzwing.gq" = {
-        enableACME = true;
+        sslCertificate = "/root/.cer/mzwing.gq/mzwing.gq.cer";
+        sslCertificateKey = "/root/.cer/mzwing.gq/mzwing.gq.key";
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
@@ -115,6 +116,7 @@
       config = {
         DOMAIN = "https://vaultwarden.mzwing.gq";
         WEBSOCKET_ENABLED =  true;
+        LOG_FILE = "/var/log/vaultwarden";
         SIGNUPS_ALLOWED = true;
         ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_PORT = 8222;
