@@ -146,7 +146,7 @@
 
   security.acme = {
     acceptTerms = true;
-    email = "mzwing@mzwing.eu.org";
+    defaults.email = "mzwing@mzwing.eu.org";
     certs."vaultwarden.mzwing.gq" = {
       group = "nginx";
       keyType = "rsa2048";
