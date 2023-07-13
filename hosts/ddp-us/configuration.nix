@@ -150,7 +150,6 @@
     certs."vaultwarden.mzwing.gq" = {
       group = "nginx";
       keyType = "rsa2048";
-      allowKeysForGroup = true;
     };
   };
 
