@@ -88,6 +88,10 @@
     };
     nginx = {
       enable = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
       streamConfig = ''
         map $ssl_preread_server_name $backend {
           ipfs.4everland.io singbox;
@@ -103,11 +107,19 @@
         }
       '';
       virtualHosts."vaultwarden.mzwing.gq" = {
-        sslCertificate = "/root/.cer/mzwing.gq/mzwing.gq.cer";
-        sslCertificateKey = "/root/.cer/mzwing.gq/mzwing.gq.key";
         forceSSL = true;
+        enableACME = true;
         locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+          proxyPass = "http://localhost:${toString config.services.vaultwarden.config.ROCKET_PORT}"; 
+          proxyWebsockets = true;
+        };
+        locations."/notifications/hub" = {
+          proxyPass = "http://localhost:3012";
+          proxyWebsockets = true;
+        };
+        locations."/notifications/hub/negotiate" = {
+          proxyPass = "http://localhost:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+          proxyWebsockets = true;
         };
       };
     };
@@ -132,7 +144,15 @@
     };
   };
 
-  security.acme.acceptTerms = true;
+  security.acme = {
+    acceptTerms = true;
+    email = "mzwing@mzwing.eu.org";
+    certs."vaultwarden.mzwing.gq" = {
+      group = "vaultwarden";
+      keyType = "rsa2048";
+      allowKeysForGroup = true;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     vim
