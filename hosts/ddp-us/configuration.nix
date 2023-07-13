@@ -148,7 +148,7 @@
     acceptTerms = true;
     email = "mzwing@mzwing.eu.org";
     certs."vaultwarden.mzwing.gq" = {
-      group = "vaultwarden";
+      group = "nginx";
       keyType = "rsa2048";
       allowKeysForGroup = true;
     };
