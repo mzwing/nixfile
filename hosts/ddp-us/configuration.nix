@@ -116,7 +116,6 @@
       config = {
         DOMAIN = "https://vaultwarden.mzwing.gq";
         WEBSOCKET_ENABLED =  true;
-        LOG_FILE = "/var/log/vaultwarden";
         SIGNUPS_ALLOWED = true;
         ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_PORT = 8222;
