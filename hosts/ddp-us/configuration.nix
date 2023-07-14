@@ -94,7 +94,8 @@
       recommendedTlsSettings = true;
       virtualHosts."vaultwarden.mzwing.gq" = {
         forceSSL = true;
-        enableACME = true;
+        sslCertificate = "/var/nginx/cert/mzwing.gq/mzwing.gq.cer";
+        sslCertificateKey = "/var/nginx/cert/mzwing.gq/mzwing.gq.key";
         locations."/" = {
           proxyPass = "http://localhost:${toString config.services.vaultwarden.config.ROCKET_PORT}"; 
           proxyWebsockets = true;
@@ -127,15 +128,6 @@
         SMTP_FROM_NAME = "vaultwarden.mzwing.gq Vaultwarden server";
       };
       environmentFile = "/var/lib/vaultwarden.env";
-    };
-  };
-
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "mzwing@mzwing.eu.org";
-    certs."vaultwarden.mzwing.gq" = {
-      group = "nginx";
-      keyType = "rsa2048";
     };
   };
 
