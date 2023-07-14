@@ -92,20 +92,6 @@
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
-      streamConfig = ''
-        map $ssl_preread_server_name $backend {
-          ipfs.4everland.io singbox;
-        }
-        upstream singbox {
-          server 127.0.0.1:1145;
-        }
-        server {
-          listen 443      reuseport;
-          proxy_pass      $backend;
-          ssl_preread     on;
-          proxy_protocol  on;
-        }
-      '';
       virtualHosts."vaultwarden.mzwing.gq" = {
         forceSSL = true;
         enableACME = true;
